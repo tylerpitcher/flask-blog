@@ -26,5 +26,5 @@ def test_title_requirements():
     '''
     user = register('poster', 'poster@test.ca', '#1abc')
     assert post(user, 'valid title', '') is not None
-    assert post(user, 'long'*16, '') is None
+    assert post(user, 'long' * 16, '') is None
     assert post(user, '', '') is None

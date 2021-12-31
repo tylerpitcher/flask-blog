@@ -14,7 +14,7 @@ def test_username_requirements():
     assert register('numbers123', 'numbers123@test.ca', '#1abc') is not None
     assert register('numbers1Mixed2In3', '1nums2@test.ca', '#1abc') is not None
     assert register('1numFirst', 'numFirst@test.ca', '#1abc') is None
-    assert register('tooLong'*10, 'tooLong@test.ca', '#1abc') is None
+    assert register('tooLong' * 10, 'tooLong@test.ca', '#1abc') is None
     assert register('slim', 'tooShort@test.ca', '#1abc') is None
 
 
@@ -32,7 +32,7 @@ def test_password_requirements():
     Tests that only valid passwords can be used to register.
     '''
     assert register('validPassw', 'validPassw@test.ca', 'v#lid123') is not None
-    assert register('longPassword', 'longPassword@test.ca', 'long'*40) is None
+    assert register('longPwd', 'longPwd@test.ca', 'long' * 40) is None
     assert register('shortPassword', 'shortPassword@test.ca', '#1a') is None
     assert register('noSpeical', 'noSepcial@test.ca', '123ab') is None
     assert register('noNums', 'noNums@test.ca', '#abcd') is None
