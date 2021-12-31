@@ -1,6 +1,6 @@
 # Description
 
-Summary of is changed or which issue is fixed. 
+Summary of what is changed or which issue is fixed. 
 
 # Type of change
 
