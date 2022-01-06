@@ -1,8 +1,8 @@
-from blog.models import Post, Comment, comment, post, delete
-
-from flask import redirect, render_template, request, Blueprint, url_for, \
-                  jsonify
+from flask import redirect, render_template, request, url_for, jsonify
+from flask import Blueprint
 from flask_login import current_user, login_required
+
+from blog.models import Post, Comment, comment, post, delete
 
 views = Blueprint('views', __name__)
 

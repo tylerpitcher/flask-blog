@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, redirect, request, jsonify, \
-                  url_for
+from flask import render_template, redirect, request, jsonify, url_for
+from flask import Blueprint
 from flask_login import login_required, login_user, logout_user, current_user
 
 from blog.models import register, login
