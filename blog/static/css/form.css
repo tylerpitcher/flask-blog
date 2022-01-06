@@ -1,0 +1,139 @@
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/static/images/background.jpeg");
+    background-size: auto;
+    background-position: right;
+    backdrop-filter: blur(1vmin);
+}
+
+.form-wrapper {
+    width: 50vw;
+    min-height: 50vh;
+    box-shadow: 0px 0px 1em 0px rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 2em auto;
+    overflow: hidden;
+    background-color: white;
+}
+
+.progress-bar {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar #stage1 {
+    grid-column: 1/2;
+    background-color: #FF1587;
+}
+
+.progress-bar #stage2 {
+    grid-column: 2/3;
+    background-color: #00CAFF;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid #FF1587;
+}
+
+.progress-bar #stage3 {
+    grid-column: 3/-1;
+    background-color: #53FF00;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid #00CAFF;
+}
+
+.form-wrapper form {
+    width: 100%;
+    height: 100%;
+    grid-row: 2/-1;
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+form .form-section {
+    width: 75%;
+    margin-bottom: 5px;
+}
+
+form #form-section-2, form #form-section-3 {
+    display: none;
+}
+
+label, input {
+    display: inline-block;
+    width: 100%;
+}
+
+input {
+    outline: none;
+    border: none;
+    margin-bottom: 1em;
+    border-bottom: 1px solid black;
+}
+
+input[type=submit], input[type=button] {
+    background-color: #FF1587;
+    padding: 0.5em;
+    border-bottom: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.type {
+    font-size: 1.5em;
+    display: block;
+    width: 11ch;
+    margin-bottom: 1em;
+    font-family: monospace;
+    overflow: hidden;
+    animation: typewriter 3s steps(11),
+    cursor 0.75s infinite;
+    white-space: nowrap;
+    border-right: 0.1em solid black;
+}
+
+.content {
+    width: calc(100% - 1em);
+    padding: 0.5em;
+    height: 20em;
+    outline: none;
+    border: 1px solid black;
+    resize: none;
+    display: block;
+}
+
+.char-count {
+    display: block;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0ch;
+    }
+    to {
+        width: 11ch;
+    }
+}
+
+@keyframes cursor {
+    from, to {
+        border-color: black;
+    }
+    50% {
+        border-color: transparent
+    }
+}

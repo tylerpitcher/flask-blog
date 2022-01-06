@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="/static/js/delete.js"></script>
+    <title>Home</title>
+</head>
+<body class="grid"> 
+    <header>
+        {% include "nav.html" %}
+    </header>
+    <main>
+        <section class="posts">
+            {% for post in user.posts %}
+            <div class="snippet">
+                <a href="/post/{{post.hash}}">
+                    Post: {{post.title}}
+                </a>
+                <button type="button" value="{{post.hash}}" class="delete-btn">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                
+            {% endfor %}
+        </section>
+
+        <section class="comments">
+            {% for comment in user.comments %}
+                <div class="snippet">
+                    <a href="/post/{{comment.post_hash}}">
+                        Comment: {{comment.msg}}
+                    </a>
+                    <button type="button" value="{{comment.id}}" class="delete-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

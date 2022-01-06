@@ -16,7 +16,7 @@ def test_user_requirements():
         password='#1abc'
     )
 
-    assert post(real_user, 'realUser', '') is not None
+    assert post(real_user, 'realUser', 'a real user') is not None
     assert post(fake_user, 'fakeUser', '') is None
 
 
@@ -25,6 +25,6 @@ def test_title_requirements():
     Tests that only valid titles can be used.
     '''
     user = register('poster', 'poster@test.ca', '#1abc')
-    assert post(user, 'valid title', '') is not None
-    assert post(user, 'long' * 16, '') is None
+    assert post(user, 'valid title', 'a valid title') is not None
+    assert post(user, 'long' * 17, '') is None
     assert post(user, '', '') is None

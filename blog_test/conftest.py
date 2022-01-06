@@ -20,6 +20,6 @@ def pytest_sessionfinish():
     '''
     Delete database file after tests.
     '''
-    print('Cleaning up environment...')
-    if os.path.exists(db_file):
-        os.remove(db_file)
+    # print('Cleaning up environment...')
+    # if os.path.exists(db_file):
+    #     os.remove(db_file)
