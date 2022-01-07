@@ -177,5 +177,27 @@ nav ul li a:hover {
     position: absolute;
     z-index: 999;
     top: 0;
-    right: 0;
+    left: 0;
+    width: calc(100% - 2rem);
+    font-size: 18px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.grid .alert {
+    top: 4rem;
+}
+
+.alert-success {
+    background-color: #53FF00;
+}
+
+.alert-error, .alert-message {
+    background-color: #FF1587;
+}
+
+span {
+    font-size: 16px;
 }

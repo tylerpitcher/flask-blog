@@ -52,26 +52,30 @@ class Comment(db.Model):
 db.create_all()
 
 
-def register(username, email, password):
+def register(username, email, password1, password2):
     '''
     Creates new users & adds them to the database.
     Returns the new user if given valid input.
     '''
-    if not is_username(username):
-        return None
-    users = User.query.filter_by(username=username).all()
-    if len(users) != 0:
-        return None
-    if not is_password(password) or not is_email(email):
-        return None
+    if not is_email(email):
+        return 'Email not valid.'
     users = User.query.filter_by(email=email).all()
     if len(users) != 0:
-        return None
+        return 'Email already taken.'
+    if not is_username(username):
+        return 'Username not valid.'
+    users = User.query.filter_by(username=username).all()
+    if len(users) != 0:
+        return 'Username already taken.'
+    if not is_password(password1):
+        return 'Password not valid.'
+    if password1 != password2:
+        return 'Passwords do not match.'
 
     user = User(
         username=username,
         email=email,
-        password=bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        password=bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
     )
 
     db.session.add(user)

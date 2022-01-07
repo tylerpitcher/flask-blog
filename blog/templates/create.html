@@ -4,14 +4,10 @@
 <script src="/static/js/word_count.js"></script>
 {% endblock %}
 {% block form %}
-<form method="POST">
-    <div class="form-section">
-        <label for="title">Title:</label>
-        <input type="title" name="title" id="title">
-        <label for="msg">Content:</label>
-        <textarea name="content" id="msg" class="content"></textarea>
-        <span class="char-count">0</span>
-        <input type="submit" value="Create">
-    </div>
-</form>
+<label for="title">Title:</label>
+<input type="title" name="title" id="title">
+<label for="msg">Content:</label>
+<textarea name="content" id="msg" class="content"></textarea>
+<span class="char-count">0</span>
+<input type="submit" value="Create">
 {% endblock %}

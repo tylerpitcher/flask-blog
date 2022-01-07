@@ -1,5 +1,5 @@
 from flask import redirect, render_template, request, url_for, jsonify
-from flask import Blueprint
+from flask import Blueprint, flash
 from flask_login import current_user, login_required
 
 from blog.models import Post, Comment, comment, post, delete
@@ -44,6 +44,7 @@ def create_post():
     )
 
     if not new_post:
+        flash('Post not created.', category='error')
         return render_template('create.html')
     return redirect(url_for('views.profile_get'))
 
@@ -68,6 +69,7 @@ def show_post_post(hash):
     if not current_post:
         return redirect(url_for('views.home'))
     if not current_user.is_authenticated:
+        flash('Must login to comment.', category='error')
         return render_template(
             'post.html',
             user=current_user,
@@ -106,7 +108,7 @@ def remove():
         item = Comment.query.filter_by(id=id).first()
     else:
         item = Post.query.filter_by(hash=id).first()
-    if item:
+    if item and item.username == current_user.username:
         delete(item)
 
     return jsonify({})

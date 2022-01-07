@@ -1,9 +1,8 @@
-from flask import render_template, redirect, request, jsonify, url_for
+from flask import render_template, redirect, request, url_for, flash
 from flask import Blueprint
 from flask_login import login_required, login_user, logout_user, current_user
 
-from blog.models import register, login
-from blog.helpers import is_email, is_username, is_password
+from blog.models import register, login, User
 
 auth = Blueprint('auth', __name__)
 
@@ -42,9 +41,11 @@ def login_post():
     )
 
     if not user:
+        flash('Login failed.', category='error')
         return render_template('login.html', user=current_user)
 
     login_user(user)
+    flash('Login successful.', category='success')
     return redirect(url_for('views.home'))
 
 
@@ -69,32 +70,14 @@ def sign_up_post():
     user = register(
         request.form.get('username'),
         request.form.get('email'),
-        request.form.get('password1')
+        request.form.get('password1'),
+        request.form.get('password2')
     )
 
-    if not user:
+    if not isinstance(user, User):
+        flash(user, category='error')
         return render_template('signup.html', user=current_user)
 
     login_user(user)
+    flash('Sign-up successful.', category='success')
     return redirect(url_for('views.home'))
-
-
-@auth.route('/signup/verify', methods=['POST'])
-def verify_post():
-    '''
-    Handles post requests to verify input.
-    '''
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
-
-    valid_email = is_email(request.form['email'])
-    valid_username = is_username(request.form['username'])
-    valid_password1 = is_password(request.form['password1'])
-    match = request.form['password1'] == request.form['password1']
-
-    return jsonify({
-        'email': valid_email,
-        'username': valid_username,
-        'password1': valid_password1,
-        'passwords_match': match
-    })
