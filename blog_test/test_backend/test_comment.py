@@ -28,7 +28,7 @@ def test_post_requirements():
     user = register('commentsOnPosts', 'commentsOnPosts@test.ca', '#1abc')
     real_post = post(user, 'a real post', '')
     fake_post = Post(
-        user_id=user.id,
+        username=user.username,
         title='A Real Post',
         content=''
     )

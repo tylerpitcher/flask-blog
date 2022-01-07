@@ -1,5 +1,7 @@
 Flask
 Flask-SQLAlchemy
+flask-login
 pytest
 flake8
 bcrypt
+hashids

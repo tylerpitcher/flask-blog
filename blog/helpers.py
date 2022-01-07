@@ -10,7 +10,10 @@ def in_database(model, obj):
     Checks to see if obj is in model's table.
     Returns true if obj is in model's table.
     '''
-    return model.query.filter_by(id=obj.id).first() is obj
+    user = model.query.filter_by(id=obj.id).first()
+    if not user:
+        return False
+    return user.username == obj.username
 
 
 def is_username(string):
@@ -21,7 +24,7 @@ def is_username(string):
     if len(string) > 32:
         return False
     regex = r'^[A-z]+[A-z0-9]{4,}$'
-    return re.match(regex, string)
+    return bool(re.match(regex, string))
 
 
 def is_email(string):

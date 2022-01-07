@@ -1,9 +1,10 @@
 '''
 Defines database models.
 '''
-
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
+from hashids import Hashids
 import bcrypt
 
 from blog.helpers import is_username, is_email, is_password, in_database
@@ -12,7 +13,7 @@ from blog import app
 db = SQLAlchemy(app)
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     '''
     Model that represents users in the database.
     '''
@@ -30,10 +31,11 @@ class Post(db.Model):
     '''
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    title = db.Column(db.String(32), unique=True)
+    title = db.Column(db.String(64), unique=True)
+    hash = db.Column(db.Text)
     content = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    comments = db.relationship('Comment')
+    username = db.Column(db.String(32), db.ForeignKey('user.username'))
+    comments = db.relationship('Comment', cascade="all, delete-orphan")
 
 
 class Comment(db.Model):
@@ -42,9 +44,9 @@ class Comment(db.Model):
     '''
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
-    msg = None
+    username = db.Column(db.String(32), db.ForeignKey('user.username'))
+    post_hash = db.Column(db.Text, db.ForeignKey('post.hash'))
+    msg = db.Column(db.Text)
 
 
 db.create_all()
@@ -98,18 +100,25 @@ def post(user, title, content):
     '''
     if not in_database(User, user):
         return None
-    if len(title) > 32 or len(title) < 3:
+    if len(title) > 64 or len(title) < 3:
         return None
 
-    post = Post(
-        user_id=user.id,
+    existing_post = Post.query.filter_by(title=title.title()).first()
+    if existing_post:
+        return None
+
+    new_post = Post(
+        username=user.username,
         title=title.title(),
         content=content
     )
 
-    db.session.add(post)
+    db.session.add(new_post)
     db.session.commit()
-    return post
+    hashids = Hashids(min_length=5, salt=app.config['SECRET_KEY'])
+    new_post.hash = hashids.encode(new_post.id)
+    db.session.commit()
+    return new_post
 
 
 def comment(user, post, msg):
@@ -123,11 +132,19 @@ def comment(user, post, msg):
         return None
 
     comment = Comment(
-        user_id=user.id,
-        post_id=post.id,
+        username=user.username,
+        post_hash=post.hash,
         msg=msg
     )
 
     db.session.add(comment)
     db.session.commit()
     return comment
+
+
+def delete(item):
+    '''
+    Delete entry in database table
+    '''
+    db.session.delete(item)
+    db.session.commit()

@@ -1,0 +1,14 @@
+{% extends "form.html" %}
+{% block title %}Login{% endblock %}
+{% block form %}
+<form method="POST">
+    <div class="form-section">
+        <h1 class="type">Login Here.</h1>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Login">
+    </div>
+</form>
+{% endblock %}
