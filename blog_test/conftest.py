@@ -8,6 +8,7 @@ import time
 import threading
 from werkzeug.serving import make_server
 from blog.__main__ import app
+from blog.models import *
 
 db_file = os.getcwd() + '/db.sqlite'
 
