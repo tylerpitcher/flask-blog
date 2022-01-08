@@ -1,19 +1,19 @@
 from seleniumbase import BaseCase
 from blog_test.conftest import base_url
 
-import time
+from blog.models import register
 
 
 class FrontEndHomePageTest(BaseCase):
 
     def test_login_success(self, *_):
-        self.open(base_url + '/signup')
+        register('frontLogin', 'frontLogin@test.ca', '#1abc', '#1abc')
+
+        self.open(base_url + '/login')
         self.type('#email', 'frontLogin@test.ca')
-        self.type('#username', 'frontLogin')
-        self.type('#password1', '#1abc')
-        self.type('#password2', '#1abc')
+        self.type('#password', '#1abc')
         self.click('input[type="submit"]')
-        
+
         self.assert_element(".alert-success")
 
     def test_login_fail(self, *_):
