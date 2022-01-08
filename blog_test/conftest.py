@@ -8,7 +8,6 @@ import time
 import threading
 from werkzeug.serving import make_server
 from blog.__main__ import app
-from blog.models import *
 
 db_file = os.getcwd() + '/db.sqlite'
 
@@ -40,6 +39,8 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         # import necessary routes
         from blog.__main__ import auth, views
+        from blog.models import db
+        db.create_all()
         self.srv = make_server('127.0.0.1', 8081, app)
         self.ctx = app.app_context()
         self.ctx.push()
