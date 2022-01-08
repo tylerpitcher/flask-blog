@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+    <script src="/static/js/dismiss.js"></script>
     <title>Home</title>
 </head>
 <body class="grid"> 
@@ -13,6 +15,16 @@
         {% include "nav.html" %}
     </header>
     <main>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{category}}">
+                    {{msg}}
+                    <button type="button" class="dismiss-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endwith %}
         <section class="posts">
             <ul>   
                 {% for post in posts %}

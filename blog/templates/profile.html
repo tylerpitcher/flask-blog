@@ -14,6 +14,16 @@
         {% include "nav.html" %}
     </header>
     <main>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{category}}">
+                    {{msg}}
+                    <button type="button" class="dismiss-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endwith %}
         <section class="posts">
             {% for post in user.posts %}
             <div class="snippet">

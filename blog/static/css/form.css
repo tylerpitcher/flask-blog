@@ -21,19 +21,19 @@ body {
     background-color: white;
 }
 
-.progress-bar {
+.color-bar {
     grid-column: 1/-1;
     display: grid;
     grid-template-columns: repeat(3, auto);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.progress-bar #stage1 {
+.color-bar #stage1 {
     grid-column: 1/2;
     background-color: #FF1587;
 }
 
-.progress-bar #stage2 {
+.color-bar #stage2 {
     grid-column: 2/3;
     background-color: #00CAFF;
     border-top: 1em solid transparent;
@@ -41,7 +41,7 @@ body {
     border-left: 1em solid #FF1587;
 }
 
-.progress-bar #stage3 {
+.color-bar #stage3 {
     grid-column: 3/-1;
     background-color: #53FF00;
     border-top: 1em solid transparent;
@@ -61,18 +61,9 @@ body {
     padding-top: 1em;
 }
 
-form .form-section {
+label, input, textarea {
+    display: block;
     width: 75%;
-    margin-bottom: 5px;
-}
-
-form #form-section-2, form #form-section-3 {
-    display: none;
-}
-
-label, input {
-    display: inline-block;
-    width: 100%;
 }
 
 input {
@@ -105,17 +96,19 @@ input[type=submit], input[type=button] {
 }
 
 .content {
-    width: calc(100% - 1em);
+    width: calc(75% - 1em);
     padding: 0.5em;
     height: 20em;
     outline: none;
     border: 1px solid black;
+    border-radius: 0;
     resize: none;
     display: block;
 }
 
 .char-count {
     display: block;
+    width: 75%;
     margin-bottom: 0.5em;
     text-align: right;
 }

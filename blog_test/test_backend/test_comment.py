@@ -9,7 +9,7 @@ def test_user_requirements():
     '''
     Tests that only real users can comment on posts.
     '''
-    real_user = register('realUser2', 'realUser2@test.ca', '#1abc')
+    real_user = register('realUser2', 'realUser2@test.ca', '#1abc', '#1abc')
     fake_user = User(
         username='fakeUser',
         email='fakeUser@test.ca',
@@ -25,7 +25,13 @@ def test_post_requirements():
     '''
     Tests that a user can only comment on a real post.
     '''
-    user = register('commentsOnPosts', 'commentsOnPosts@test.ca', '#1abc')
+    user = register(
+        'commentsOnPosts',
+        'commentsOnPosts@test.ca',
+        '#1abc',
+        '#1abc'
+    )
+
     real_post = post(user, 'a real post', '')
     fake_post = Post(
         username=user.username,
