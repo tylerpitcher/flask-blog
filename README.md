@@ -12,7 +12,7 @@ Start server,
 ```
 python3 -m blog
 ```
-open your web browser and go to,
+Open your web browser and go to,
 ```
 http://localhost:8081/
 ```
@@ -24,5 +24,5 @@ http://localhost:8081/
 <img src="https://i.imgur.com/ocSygoE.png" height="400">
 <img src="https://i.imgur.com/T6UkW6G.png" height="400">
 
-## Mobile Browsers Supported
+## Supports Mobile Browsers
 <img src="https://i.imgur.com/31SsVcW.png" height="400">
