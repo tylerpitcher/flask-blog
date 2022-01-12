@@ -5,17 +5,17 @@ A blogging site created using flask.
 
 ## How to Run
 Install libraries with pip3,
-'''
+```
 pip3 install -r requirements.txt
-'''
+```
 Start server,
-'''
+```
 python3 -m blog
-'''
+```
 open your web browser and go to,
-'''
+```
 http://localhost:8081/
-''
+```
 
 ## Browse Posts
 <img src="https://i.imgur.com/EIWor69.png" height="400">
