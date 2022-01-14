@@ -2,6 +2,58 @@
 [![Pytest-All](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml)
 [![Python PEP8](https://github.com/tylerpitcher/flask-blog/actions/workflows/style_check.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/style_check.yml) <br />
 A blogging site created using flask.
+```
+├── LICENSE
+├── README.md
+├── .github
+│   ├── workflows
+│   │   ├── pytest.yml
+│   │   └── style_check.yml
+│   └── pull_request_template.md
+├── .gitignore
+├── blog
+│   ├── static 
+│   │   ├── css
+│   │   │   ├── base.css           ======> Base CSS on all pages
+│   │   │   ├── form.css           ======> CSS for all form pages
+│   │   │   └── responsive.css     ======> Creates responsive viewing
+│   │   ├── images
+│   │   │   ├── background.jpeg 
+│   │   │   └── index.png       
+│   │   └── js
+│   │       ├── char_count.js      ======> Character count when creating posts
+│   │       ├── delete.js          ======> Delete comments & posts
+│   │       └── dismiss.js         ======> Dismiss alerts
+│   ├── templates
+│   │   ├── create.html            ======> Create post html
+│   │   ├── form.html              ======> Base form html
+│   │   ├── index.html             ======> Homepage html
+│   │   ├── login.html             ======> Login html
+│   │   ├── nav.html               ======> Navbar html
+│   │   ├── post.html              ======> Post html
+│   │   ├── profile.html           ======> Profile html
+│   │   └── signup.html            ======> Sign up html
+│   ├── __init__.py                ======> Initiates application
+│   ├── __main__.py                ======> Runs application
+│   ├── auth.py                    ======> Handles user auth
+│   ├── helpers.py                 ======> Helpers for models.py
+│   ├── models.py                  ======> Defines database models
+│   └── views.py                   ======> Provides views to user
+├── blog_test
+│   ├── test_backend
+│   │   ├── test_comment.py        ======> Test backend ability to comment
+│   │   ├── test_login.py          ======> Test backend ability to login
+│   │   ├── test_post.py           ======> Test backend ability to post
+│   │   └── test_register.py       ======> Test backend registration
+│   ├── test_frontend
+│   │   ├── test_front_comment.py  ======> Test frontend ability to comment
+│   │   ├── test_front_login.py    ======> Test frontend ability to login
+│   │   ├── test_front_post.py     ======> Test frontend ability to post
+│   │   └── test_front_register.py ======> Test frontend registration
+│   ├── __init__.py
+│   └── conftest.py                ======> Configures pytests
+└── requirements.txt               ======> Requirements for project
+```
 
 ## How to Run
 Install libraries with pip3,
