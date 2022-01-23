@@ -3,7 +3,7 @@ $(document).ready(function() {
         $(this).click(function() {
             $.ajax({
                 data: {
-                    id: $(this).val()
+                    hash: $(this).val()
                 },
                 type: 'DELETE',
                 url: '/remove'
