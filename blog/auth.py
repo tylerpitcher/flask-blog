@@ -1,3 +1,7 @@
+'''
+Handles authentication routing.
+'''
+
 from flask import render_template, redirect, request, url_for, flash
 from flask import Blueprint
 from flask_login import login_required, login_user, logout_user, current_user

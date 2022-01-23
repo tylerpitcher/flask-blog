@@ -1,3 +1,7 @@
+'''
+Handles main routing requests.
+'''
+
 from flask import redirect, render_template, request, url_for, jsonify
 from flask import Blueprint, flash
 from flask_login import current_user, login_required
@@ -96,7 +100,7 @@ def profile_get():
     return render_template('profile.html', user=current_user, posts=posts)
 
 
-@views.route('/remove', methods=['POST'])
+@views.route('/remove', methods=['DELETE'])
 @login_required
 def remove():
     '''

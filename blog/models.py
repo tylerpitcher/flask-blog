@@ -1,6 +1,7 @@
 '''
 Defines database models.
 '''
+
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func

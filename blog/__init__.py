@@ -1,6 +1,7 @@
 '''
 An init file is required for this folder to be considered as a module.
 '''
+
 from flask import Flask
 
 app = Flask(__name__)

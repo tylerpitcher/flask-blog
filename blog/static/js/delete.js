@@ -5,7 +5,7 @@ $(document).ready(function() {
                 data: {
                     id: $(this).val()
                 },
-                type: 'POST',
+                type: 'DELETE',
                 url: '/remove'
             }).done(function() {
                 location.reload();
