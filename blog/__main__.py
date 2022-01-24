@@ -1,3 +1,7 @@
+'''
+Main file, runs app.
+'''
+
 from blog.models import User
 from blog.views import views
 from blog.auth import auth

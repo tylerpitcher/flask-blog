@@ -3,9 +3,9 @@ $(document).ready(function() {
         $(this).click(function() {
             $.ajax({
                 data: {
-                    id: $(this).val()
+                    hash: $(this).val()
                 },
-                type: 'POST',
+                type: 'DELETE',
                 url: '/remove'
             }).done(function() {
                 location.reload();

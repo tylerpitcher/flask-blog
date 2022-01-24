@@ -1,6 +1,8 @@
 '''
 Defines database models.
 '''
+
+from enum import unique
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
@@ -32,7 +34,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     title = db.Column(db.String(64), unique=True)
-    hash = db.Column(db.Text)
+    hash = db.Column(db.Text, unique=True)
     content = db.Column(db.Text)
     username = db.Column(db.String(32), db.ForeignKey('user.username'))
     comments = db.relationship('Comment', cascade="all, delete-orphan")
@@ -46,6 +48,7 @@ class Comment(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     username = db.Column(db.String(32), db.ForeignKey('user.username'))
     post_hash = db.Column(db.Text, db.ForeignKey('post.hash'))
+    hash = db.Column(db.Text, unique=True)
     msg = db.Column(db.Text)
 
 
@@ -120,7 +123,7 @@ def post(user, title, content):
     db.session.add(new_post)
     db.session.commit()
     hashids = Hashids(min_length=5, salt=app.config['SECRET_KEY'])
-    new_post.hash = hashids.encode(new_post.id)
+    new_post.hash = hashids.encode(new_post.id) + 'P'
     db.session.commit()
     return new_post
 
@@ -142,6 +145,9 @@ def comment(user, post, msg):
     )
 
     db.session.add(comment)
+    db.session.commit()
+    hashids = Hashids(min_length=5, salt=app.config['SECRET_KEY'])
+    comment.hash = hashids.encode(comment.id) + 'C'
     db.session.commit()
     return comment
 

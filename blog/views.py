@@ -1,3 +1,7 @@
+'''
+Handles main routing requests.
+'''
+
 from flask import redirect, render_template, request, url_for, jsonify
 from flask import Blueprint, flash
 from flask_login import current_user, login_required
@@ -96,18 +100,19 @@ def profile_get():
     return render_template('profile.html', user=current_user, posts=posts)
 
 
-@views.route('/remove', methods=['POST'])
+@views.route('/remove', methods=['DELETE'])
 @login_required
 def remove():
     '''
     Handles post requests to remove comments or posts.
     '''
-    id = request.form['id']
+    hash = request.form['hash']
     item = None
-    if id.isnumeric():
-        item = Comment.query.filter_by(id=id).first()
-    else:
-        item = Post.query.filter_by(hash=id).first()
+    if hash[-1] == 'C':
+        item = Comment.query.filter_by(hash=hash).first()
+    elif hash[-1] == 'P':
+        item = Post.query.filter_by(hash=hash).first()
+
     if item and item.username == current_user.username:
         delete(item)
 
