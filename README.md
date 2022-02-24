@@ -56,8 +56,10 @@ A blogging site created using flask.
 ```
 
 ## Frontend & Backend Testing
-This project includes all-encompassing frontend & backend testing. 
+This project includes all-encompassing frontend & backend testing. \
 The tests can be found in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test">./blog_test</a>
+with frontend tests stored in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_frontend">./blog_test/front_end</a>
+and all backend tests in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_backend">./blog_test/test_backend</a>
 
 ## How to Run
 Install libraries with pip3,
