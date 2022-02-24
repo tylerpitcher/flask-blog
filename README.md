@@ -3,28 +3,7 @@
 [![Python PEP8](https://github.com/tylerpitcher/flask-blog/actions/workflows/style_check.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/style_check.yml) <br />
 A blogging site created using flask.
 
-## Frontend & Backend Testing 
-This project includes all-encompassing frontend & backend tests. \
-The tests can be found in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test">./blog_test</a>,
- with frontend tests stored in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_frontend">./blog_test/front_end</a>
-and all backend tests in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_backend">./blog_test/test_backend</a> <br /> <br />
-[![Pytest-All](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml) 
-
-## How to Run
-Install libraries with pip3,
-```
-pip3 install -r requirements.txt
-```
-Start server,
-```
-python3 -m blog
-```
-Open your web browser and go to,
-```
-http://localhost:8081/
-```
-
-## Files
+## Repository Files
 ```
 ├── LICENSE
 ├── README.md
@@ -76,6 +55,27 @@ http://localhost:8081/
 │   ├── __init__.py
 │   └── conftest.py                ======> Configures pytests
 └── requirements.txt               ======> Requirements for project
+```
+
+## Frontend & Backend Testing 
+This project includes all-encompassing frontend & backend tests. \
+The tests can be found in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test">./blog_test</a>,
+ with frontend tests stored in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_frontend">./blog_test/front_end</a>
+and all backend tests in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_backend">./blog_test/test_backend</a> <br /> <br />
+[![Pytest-All](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml) 
+
+## How to Run
+Install libraries with pip3,
+```
+pip3 install -r requirements.txt
+```
+Start server,
+```
+python3 -m blog
+```
+Open your web browser and go to,
+```
+http://localhost:8081/
 ```
 
 ## Browse Posts
