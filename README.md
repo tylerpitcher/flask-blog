@@ -55,6 +55,10 @@ A blogging site created using flask.
 └── requirements.txt               ======> Requirements for project
 ```
 
+## Frontend & Backend Testing
+This project includes all-encompassing frontend & backend testing. 
+The tests can be found in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test">./blog_test</a>
+
 ## How to Run
 Install libraries with pip3,
 ```
