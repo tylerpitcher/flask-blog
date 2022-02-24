@@ -55,7 +55,8 @@ A blogging site created using flask.
 └── requirements.txt               ======> Requirements for project
 ```
 
-## Frontend & Backend Testing [![Pytest-All](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml)
+## Frontend & Backend Testing 
+[![Pytest-All](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml/badge.svg)](https://github.com/tylerpitcher/flask-blog/actions/workflows/pytest.yml) \
 This project includes all-encompassing frontend & backend tests. \
 The tests can be found in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test">./blog_test</a>
 , with frontend tests stored in <a href="https://github.com/tylerpitcher/flask-blog/tree/main/blog_test/test_frontend">./blog_test/front_end</a>
