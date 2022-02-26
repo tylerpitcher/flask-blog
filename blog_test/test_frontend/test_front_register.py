@@ -1,3 +1,6 @@
+'''
+Frontend tests for registering users.
+'''
 from seleniumbase import BaseCase
 from blog_test.conftest import base_url
 
