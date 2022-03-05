@@ -36,7 +36,7 @@ def create_get():
 @login_required
 def create_post():
     '''
-    Handles post requests to create a new product.
+    Handles post requests to create a new post.
     '''
     title = request.form.get('title')
     content = request.form.get('content')
