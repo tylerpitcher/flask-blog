@@ -41,4 +41,4 @@ def getPostPolarity(post):
     if not sumOfPolarities:
         return 0
 
-    return round(sumOfPolarities/len(polarities), 2)
+    return round(sumOfPolarities / len(polarities), 2)
