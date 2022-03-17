@@ -17,8 +17,8 @@ def dashboard_get():
     posts = Post.query.all()
     posts = sorted(
         posts,
-         key=lambda p: len(p.comments), 
-         reverse=True
+        key=lambda p: len(p.comments), 
+        reverse=True
     )
     posts = list(
         map(lambda p: (p, getPostPolarity(p)), posts)
