@@ -24,30 +24,22 @@
                 </div>
             {% endfor %}
         {% endwith %}
-        <section class="posts">
-            {% for post in user.posts %}
-            <div class="snippet">
-                <a href="/post/{{post.hash}}">
-                    Post: {{post.title}}
-                </a>
-                <button type="button" value="{{post.hash}}" class="delete-btn">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-                
-            {% endfor %}
-        </section>
 
-        <section class="comments">
-            {% for comment in user.comments %}
-                <div class="snippet">
-                    <a href="/post/{{comment.post_hash}}">
-                        Comment: {{comment.msg}}
-                    </a>
-                    <button type="button" value="{{comment.hash}}" class="delete-btn">
+        <section class="posts">
+            {% for post, polarity in posts %}
+            <div class="content row">
+                <a href="/post/{{post.hash}}">{{post.title}}</a>
+                <div>
+                    {% if polarity < 0 %}
+                    <span class="tag pink-tag">{{ "%.2f"|format(polarity) }}</span>
+                    {% else %}
+                    <span class="tag green-tag">{{ "+%.2f"|format(polarity) }}</span>
+                    {% endif %}
+                    <button type="button" value="{{post.hash}}" class="delete-btn">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+            </div> 
             {% endfor %}
         </section>
     </main>
