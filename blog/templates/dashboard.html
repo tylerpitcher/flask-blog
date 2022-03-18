@@ -5,15 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/static/css/base.css">
     <script src="/static/js/delete.js"></script>
-    <title>Home</title>
+    <script src="/static/js/displayCharts.js"></script>
+    <title>Dashboard</title>
 </head>
 <body class="grid"> 
     <header>
         {% include "nav.html" %}
     </header>
-    <main>
+    <main class="no-bg">
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% for category, msg in messages %}
                 <div class="alert alert-{{category}}">
@@ -24,6 +26,19 @@
                 </div>
             {% endfor %}
         {% endwith %}
+        
+        <section class="charts">
+            <div class="content">
+                <canvas id="linechart1"></canvas>
+            </div>
+    
+            <div class="content">
+                <canvas id="linechart2"></canvas>
+            </div>
+            <script>
+                displayCharts();
+            </script>
+        </section>
 
         <section class="posts">
             {% for post, polarity in posts %}
