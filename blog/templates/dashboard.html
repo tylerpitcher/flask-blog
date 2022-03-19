@@ -29,21 +29,22 @@
         
         <section class="charts">
             <div class="content">
-                <canvas id="linechart1"></canvas>
+                <canvas id="linechart"></canvas>
             </div>
     
-            <div class="content">
-                <canvas id="linechart2"></canvas>
-            </div>
             <script>
-                displayCharts();
+                displayChart({{labels|safe}}, {{data|safe}});
             </script>
         </section>
 
         <section class="posts">
+            <div class="content row">
+                <span>(&nbsp;&nbsp;ID&nbsp;&nbsp;) TITLE</span>
+                <span>POLARITY (+/-)</span>
+            </div>
             {% for post, polarity in posts %}
             <div class="content row">
-                <a href="/post/{{post.hash}}">{{post.title}}</a>
+                <a href="/post/{{post.hash}}">({{post.hash}}) {{post.title}}</a>
                 <div>
                     {% if polarity < 0 %}
                     <span class="tag pink-tag">{{ "%.2f"|format(polarity) }}</span>
