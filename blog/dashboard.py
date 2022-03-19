@@ -33,7 +33,13 @@ def dashboard_get():
         map(lambda p: (p, getPostPolarity(p)), posts)
     )
     
-    return render_template('dashboard.html', user=current_user, posts=posts, labels=labels, data=data)
+    return render_template(
+        'dashboard.html', 
+        user=current_user, 
+        posts=posts, 
+        labels=labels, 
+        data=data
+    )
 
 
 def getCommentPolarity(comment):
