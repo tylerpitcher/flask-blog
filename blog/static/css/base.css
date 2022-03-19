@@ -23,7 +23,7 @@ li, a {
 
 .grid {
     display: grid;
-    grid-template-rows: 4em minmax(max-content, 100vh);
+    grid-template-rows: 4em calc(100vh - 4em);
 }
 
 .grid header {
@@ -42,10 +42,7 @@ li, a {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-
-.grid .no-bg {
-    background-image: none;
+    overflow: scroll;
 }
 
 .posts, .posts ul {
