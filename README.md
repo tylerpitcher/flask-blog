@@ -87,7 +87,7 @@ http://localhost:8081/
 <img src="https://i.imgur.com/LZJ0R1C.png" height="400" alt="adding comment to post">
 
 ## Dashboard
-View top-performing posts and analyze reader sentiment.
+View top-performing posts and analyze reader sentiment. <br />
 <img src="https://i.imgur.com/QxF2lIM.png" height="400">
 
 ## Supports Mobile Browsers
