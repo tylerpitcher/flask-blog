@@ -84,7 +84,6 @@ http://localhost:8081/
 
 ## Post & Add Comments
 <img src="https://i.imgur.com/ocSygoE.png" height="400" alt="creating new post">
-<img src="https://i.imgur.com/LZJ0R1C.png" height="400" alt="adding comment to post">
 
 ## Dashboard
 View top-performing posts and analyze reader sentiment. <br />
