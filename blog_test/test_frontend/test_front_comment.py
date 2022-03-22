@@ -18,8 +18,8 @@ class FrontEndHomePageTest(BaseCase):
         self.type('#password', '#1abc')
         self.click('input[type="submit"]')
 
-        self.open(base_url + '/profile')
-        self.click('.posts .snippet a')
+        self.open(base_url + '/dashboard')
+        self.click('.posts .content a')
 
         self.type('input[type="text"]', 'my comment')
         self.click('input[type="submit"]')

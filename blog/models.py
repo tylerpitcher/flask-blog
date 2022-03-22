@@ -2,7 +2,6 @@
 Defines database models.
 '''
 
-from enum import unique
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func

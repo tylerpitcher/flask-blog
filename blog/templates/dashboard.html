@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="/static/js/delete.js"></script>
+    <script src="/static/js/displayChart.js"></script>
+    <title>Dashboard</title>
+</head>
+<body class="grid"> 
+    <header>
+        {% include "nav.html" %}
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{category}}">
+                    {{msg}}
+                    <button type="button" class="dismiss-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+        
+        <section class="charts">
+            <div class="content">
+                <canvas id="linechart"></canvas>
+            </div>
+    
+            <script>
+                displayChart({{labels|safe}}, {{data|safe}});
+            </script>
+        </section>
+
+        <section class="posts">
+            <div class="content row">
+                <span>(&nbsp;&nbsp;ID&nbsp;&nbsp;) TITLE</span>
+                <span>POLARITY (+/-)</span>
+            </div>
+            {% for post, polarity in posts %}
+            <div class="content row">
+                <a href="/post/{{post.hash}}">({{post.hash}}) {{post.title}}</a>
+                <div>
+                    {% if polarity < 0 %}
+                    <span class="tag pink-tag">{{ "%.2f"|format(polarity) }}</span>
+                    {% else %}
+                    <span class="tag green-tag">{{ "+%.2f"|format(polarity) }}</span>
+                    {% endif %}
+                    <button type="button" value="{{post.hash}}" class="delete-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

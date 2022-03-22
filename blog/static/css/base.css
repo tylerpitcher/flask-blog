@@ -75,7 +75,7 @@ li, a {
     background-color: white;
     border-radius: 3em;
     box-shadow: 0px 0px 1em 0px rgba(0, 0, 0, 0.2);
-    margin-top: 2em;
+    margin: 1em 0em 1em 0em;
     flex-wrap: wrap;
 }
 
@@ -90,7 +90,7 @@ li, a {
     background-color: white;
     border-radius: 1em;
     box-shadow: 0px 0px 1em 0px rgba(0, 0, 0, 0.2);
-    margin-top: 2em;
+    margin: 1em 0em 1em 0em;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -100,14 +100,18 @@ li, a {
     padding: 0.1em 1em 0.1em 1em;
     border-radius: 3em;
     color: white;
+    text-shadow: 0.05em 0.05em black;
 }
 
-.author-tag {
+.pink-tag {
     background-color: #FF1587;
 }
 
+.green-tag {
+    background-color: #53FF00;
+}
+
 .content input {
-    /* display: none; */
     outline: none;
     border: none;
 }
@@ -119,7 +123,6 @@ li, a {
 
 .content input[type=submit] {
     background-color: #FF1587;
-    /* width: 100%; */
     margin-left: auto;
     margin-right: 0px;
     color: white;
@@ -144,7 +147,6 @@ button {
     background-color: transparent;
 }
 .posts {
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -196,6 +198,18 @@ nav ul li a:hover {
     background-color: #FF1587;
 }
 
-/* span {
-    font-size: 16px;
-} */
+.row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+canvas {
+    max-height: 50vh;
+}
+
+.charts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

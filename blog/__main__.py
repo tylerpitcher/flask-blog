@@ -5,12 +5,14 @@ Main file, runs app.
 from blog.models import User
 from blog.views import views
 from blog.auth import auth
+from blog.dashboard import dashboard
 from blog import app
 
 from flask_login import LoginManager
 
 app.register_blueprint(views, url_prefix='/')
 app.register_blueprint(auth, url_prefix='/')
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login_get'

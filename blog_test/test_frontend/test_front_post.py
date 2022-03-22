@@ -21,8 +21,8 @@ class FrontEndHomePageTest(BaseCase):
         self.type('#title', 'Successful post')
         self.click('input[type="submit"]')
 
-        self.open(base_url + '/profile')
-        self.assert_element('.posts .snippet')
+        self.open(base_url + '/dashboard')
+        self.assert_element('.posts .content')
 
     def test_post_fail(self, *_):
         register('frontPoster2', 'frontPoster2@test.ca', '#1abc', '#1abc')

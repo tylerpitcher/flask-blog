@@ -16,10 +16,11 @@ def home():
     '''
     Handles get requests for index page.
     '''
-    if current_user.is_authenticated:
-        posts = Post.query.filter(Post.username != current_user.username)
-    else:
-        posts = Post.query.all()
+
+    posts = Post.query.all()
+    if not len(posts):
+        flash('No posts available at this time.', category='error')
+        
     return render_template('index.html', user=current_user, posts=posts)
 
 
@@ -50,7 +51,7 @@ def create_post():
     if not new_post:
         flash('Post not created.', category='error')
         return render_template('create.html')
-    return redirect(url_for('views.profile_get'))
+    return redirect(url_for('dashboard.dashboard_get'))
 
 
 @views.route('/post/<hash>')
@@ -88,16 +89,6 @@ def show_post_post(hash):
     )
 
     return render_template('post.html', user=current_user, post=current_post)
-
-
-@views.route('/profile')
-@login_required
-def profile_get():
-    '''
-    Handles get requests for profile page.
-    '''
-    posts = Post.query.filter_by(username=current_user.username)
-    return render_template('profile.html', user=current_user, posts=posts)
 
 
 @views.route('/remove', methods=['DELETE'])
