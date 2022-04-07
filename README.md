@@ -85,9 +85,5 @@ http://localhost:8081/
 ## Post & Add Comments
 <img src="https://i.imgur.com/ocSygoE.png" height="400" alt="creating new post">
 
-## Dashboard
-View top-performing posts and analyze reader sentiment. <br />
-<img src="https://i.imgur.com/QxF2lIM.png" height="400">
-
 ## Supports Mobile Browsers
 <img src="https://i.imgur.com/31SsVcW.png" height="400" alt="login page for mobile">
